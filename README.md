@@ -1,1 +1,1 @@
-#Python application used to connect SQLite database using sqlite3 and PySimple GUI libraries
+# Python application used to connect SQLite database using sqlite3 and PySimple GUI libraries
