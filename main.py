@@ -6,7 +6,6 @@
 
 import sqlite3
 from sqlite3 import Error
-
 import PySimpleGUI as sg
 
 sg.theme('BlueMono')
@@ -61,7 +60,7 @@ def search_for_internships(conn):
     for row in rows:
         print(row)
 
-
+# manually insert to database
 def insert_to_database(conn):
     internship_id = input('Enter internship ID: ')
     internship_description = input('Enter internship description: ')
@@ -77,21 +76,21 @@ def insert_to_database(conn):
 
 
 # Open GUI to display internships
-def get_internship(conn, internship, window):
+def get_internship(conn, company_name, window):
     """
     get and display the films seen and ranked by
     a respondent and display them in the window
     :param window:
     :param conn:
-    :param internship:
+    :param company_name:
     :return:
     """
     cur = conn.cursor()
 
-    if internship == '':
+    if company_name == '':
         cur.execute("select * from 'Search for internships'")
     else:
-        cur.execute("select * from 'Search for internships' where company_name = ?", (internship,))
+        cur.execute("select * from 'Search for internships' where company_name = ?", (company_name,))
 
     rows = cur.fetchall()
     window['-Internship-'].update(values=rows)
